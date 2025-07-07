@@ -6,28 +6,67 @@
   <title>Arcane Realms - Home</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --bg-color: #1e1e2f;
+      --text-color: #f4f1e9;
+      --header-bg: #2e2e4f;
+      --nav-bg: #3e3e5f;
+      --section-bg: #2a2a3e;
+      --highlight: #a98c5f;
+    }
+
+    body.light-theme {
+      --bg-color: #f4f1e9;
+      --text-color: #1e1e2f;
+      --header-bg: #eaeaea;
+      --nav-bg: #d4d4d4;
+      --section-bg: #ffffff;
+      --highlight: #7a5c2d;
+    }
+
     body {
       font-family: 'Georgia', serif;
-      background-color: #1e1e2f;
-      color: #f4f1e9;
+      background-color: var(--bg-color);
+      color: var(--text-color);
       margin: 0;
       padding: 0;
+      transition: background 0.3s, color 0.3s;
     }
     header {
-      background-color: #2e2e4f;
+      background-color: var(--header-bg);
       padding: 20px;
       text-align: center;
-      border-bottom: 3px solid #a98c5f;
+      border-bottom: 3px solid var(--highlight);
+      position: relative;
     }
     header h1 {
       margin: 0;
       font-size: 2.8em;
       font-family: 'Cinzel', serif;
     }
+    .theme-toggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: linear-gradient(135deg, #a98c5f, #f4f1e9);
+      color: #1e1e2f;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-weight: bold;
+      font-size: 0.9em;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+    .theme-toggle:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+    }
     nav {
       display: flex;
       justify-content: center;
-      background-color: #3e3e5f;
+      background-color: var(--nav-bg);
       padding: 10px 0;
     }
     .btn-nav {
@@ -55,8 +94,8 @@
       padding: 30px;
       max-width: 900px;
       margin: auto;
-      background-color: #2a2a3e;
-      border: 2px solid #a98c5f;
+      background-color: var(--section-bg);
+      border: 2px solid var(--highlight);
       border-radius: 12px;
       box-shadow: 0 0 10px #00000088;
     }
@@ -88,12 +127,12 @@
       background-color: #4752c4;
     }
     footer {
-      background-color: #2e2e4f;
+      background-color: var(--header-bg);
       color: #ccc;
       text-align: center;
       padding: 10px;
       font-size: 0.9em;
-      border-top: 2px solid #a98c5f;
+      border-top: 2px solid var(--highlight);
     }
   </style>
 </head>
@@ -101,6 +140,7 @@
   <header>
     <h1>Arcane Realms - Team Arcadia</h1>
     <p>Strength. Skill. Unity.</p>
+    <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
   </header>
 
   <nav>
@@ -124,29 +164,29 @@
   <footer>
     &copy; 2025 Arcane Realms Team Arcadia | Designed by Owaila256
   </footer>
-</body>
-</html>
 
-<!-- COMMENT SECTION -->
-<section style="padding: 30px; max-width: 900px; margin: auto;">
-  <h2 style="font-family: 'Cinzel', serif; color: #e6c17c; text-align: center;">💬 Comments</h2>
-  <div id="disqus_thread"></div>
+  <section style="padding: 30px; max-width: 900px; margin: auto;">
+    <h2 style="font-family: 'Cinzel', serif; color: #e6c17c; text-align: center;">💬 Comments</h2>
+    <div id="disqus_thread"></div>
+    <script>
+      var disqus_config = function () {
+        this.page.url = window.location.href;
+        this.page.identifier = window.location.pathname;
+      };
+      (function() {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://arcadiateam-comments.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+      })();
+    </script>
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </section>
 
   <script>
-    var disqus_config = function () {
-      this.page.url = window.location.href;
-      this.page.identifier = window.location.pathname; // ensures uniqueness
-    };
-
-    (function() {
-      var d = document, s = d.createElement('script');
-      s.src = 'https://arcadiateam-comments.disqus.com/embed.js'; // https-owaila256-github-io-arcadia-index-html
-      s.setAttribute('data-timestamp', +new Date());
-      (d.head || d.body).appendChild(s);
-    })();
+    function toggleTheme() {
+      document.body.classList.toggle('light-theme');
+    }
   </script>
-
-  <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
-</section>
-
-
+</body>
+</html>
