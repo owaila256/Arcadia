@@ -126,3 +126,23 @@
   </footer>
 </body>
 </html>
+
+<!-- COMMENT SECTION -->
+<section style="padding: 30px; max-width: 900px; margin: auto;">
+  <h2 style="font-family: 'Cinzel', serif; color: #e6c17c; text-align: center;">💬 Comments</h2>
+  <div id="disqus_thread"></div>
+  <script>
+    var disqus_config = function () {
+      this.page.url = window.location.href;
+      this.page.identifier = "arcadia-home";
+    };
+    (function() {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://YOUR_SHORTNAME_HERE.disqus.com/embed.js'; // Replace this with your real shortname!
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+</section>
+
