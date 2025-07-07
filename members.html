@@ -71,5 +71,65 @@
       width: 100%;
       border-radius: 6px;
     }
-    .membe
+    .member-card p {
+      margin: 10px 0 0;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <button id="themeToggle">☀️ Light Mode</button>
 
+  <nav>
+    <a href="index.html" class="btn-nav">🏠 Home</a>
+    <a href="members.html" class="btn-nav">🧍 Members</a>
+    <a href="application.html" class="btn-nav">📋 Apply</a>
+    <a href="https://discord.gg/QuXggxyzQk" target="_blank" class="btn-nav discord">💬 Discord</a>
+  </nav>
+
+  <main>
+    <h1>⚔ Arcadia Members ⚔</h1>
+
+    <h2>Owner</h2>
+    <div class="member-group">
+      <div class="member-card">
+        <img src="https://mc-heads.net/body/Pon" alt="Pon">
+        <p>Pon</p>
+      </div>
+    </div>
+
+    <h2>Admins</h2>
+    <div class="member-group">
+      <div class="member-card">
+        <img src="https://mc-heads.net/body/owaila256" alt="owaila256">
+        <p>owaila256</p>
+      </div>
+      <div class="member-card">
+        <img src="https://mc-heads.net/body/3rrorr" alt="3rrorr">
+        <p>3rrorr</p>
+      </div>
+      <div class="member-card">
+        <img src="https://mc-heads.net/body/Ash" alt="Ash">
+        <p>Ash</p>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    window.onload = function () {
+      const toggle = document.getElementById('themeToggle');
+      const body = document.body;
+      if (localStorage.getItem('theme') === 'light') {
+        body.classList.add('light-theme');
+        toggle.textContent = '🌙 Dark Mode';
+      }
+      toggle.onclick = () => {
+        body.classList.toggle('light-theme');
+        const theme = body.classList.contains('light-theme') ? 'light' : 'dark';
+        localStorage.setItem('theme', theme);
+        toggle.textContent = theme === 'light' ? '🌙 Dark Mode' : '☀️ Light Mode';
+      };
+    };
+  </script>
+</body>
+</html>
