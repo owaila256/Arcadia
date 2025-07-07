@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Team Arcadia - Members</title>
+  <title>Arcane Realms - Home</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&display=swap" rel="stylesheet">
   <style>
     body {
@@ -12,24 +12,57 @@
       color: #f4f1e9;
       margin: 0;
       padding: 0;
+      transition: background 0.3s, color 0.3s;
     }
+
+    body.light {
+      background-color: #f4f1e9;
+      color: #1e1e2f;
+    }
+
     header {
       background-color: #2e2e4f;
       padding: 20px;
       text-align: center;
       border-bottom: 3px solid #a98c5f;
+      position: relative;
     }
+
+    body.light header {
+      background-color: #eaeaea;
+      border-bottom: 3px solid #7a5c2d;
+    }
+
     header h1 {
       margin: 0;
-      font-size: 2.5em;
+      font-size: 2.8em;
       font-family: 'Cinzel', serif;
     }
+
+    .theme-toggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background-color: #a98c5f;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
     nav {
       display: flex;
       justify-content: center;
       background-color: #3e3e5f;
       padding: 10px 0;
     }
+
+    body.light nav {
+      background-color: #d4d4d4;
+    }
+
     .btn-nav {
       background-image: url('button.png');
       background-size: cover;
@@ -48,38 +81,84 @@
       text-decoration: none;
       display: inline-block;
     }
+
     .btn-nav:hover {
       filter: brightness(1.1);
     }
+
     section {
       padding: 30px;
-      max-width: 800px;
+      max-width: 900px;
       margin: auto;
       background-color: #2a2a3e;
       border: 2px solid #a98c5f;
       border-radius: 12px;
       box-shadow: 0 0 10px #00000088;
+      transition: background-color 0.3s;
     }
-    h2, h3 {
+
+    body.light section {
+      background-color: #ffffff;
+      border-color: #7a5c2d;
+    }
+
+    h2 {
       font-family: 'Cinzel', serif;
       color: #e6c17c;
     }
-    ul {
-      list-style-type: none;
-      padding-left: 0;
+
+    body.light h2 {
+      color: #7a5c2d;
     }
-    li {
-      background-color: #3b3b5a;
-      margin-bottom: 10px;
-      padding: 10px;
-      border-radius: 6px;
+
+    .intro p {
       font-size: 1.1em;
+      line-height: 1.6em;
+      margin-bottom: 20px;
+    }
+
+    .discord-btn {
+      display: block;
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .discord-btn a {
+      display: inline-block;
+      background-color: #5865F2;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .discord-btn a:hover {
+      background-color: #4752c4;
+    }
+
+    footer {
+      background-color: #2e2e4f;
+      color: #ccc;
+      text-align: center;
+      padding: 10px;
+      font-size: 0.9em;
+      border-top: 2px solid #a98c5f;
+    }
+
+    body.light footer {
+      background-color: #eaeaea;
+      color: #1e1e2f;
+      border-top: 2px solid #7a5c2d;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Team Arcadia - Members</h1>
+    <h1>Arcane Realms - Team Arcadia</h1>
+    <p>Strength. Skill. Unity.</p>
+    <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
   </header>
 
   <nav>
@@ -88,18 +167,49 @@
     <a href="application.html" class="btn-nav">APPLY</a>
   </nav>
 
-  <section>
-    <h2>Owner</h2>
-    <ul>
-      <li>Pon</li>
-    </ul>
-
-    <h3>Admins</h3>
-    <ul>
-      <li>owaila256</li>
-      <li>3rrorr</li>
-      <li>Ash</li>
-    </ul>
+  <section class="intro">
+    <h2>🌿 Welcome to Arcadia 🌿</h2>
+    <p><strong>Strength. Skill. Unity.</strong></p>
+    <p>In the vast world of Arcane Realms, one name echoes through the lands — <strong>Arcadia</strong>.</p>
+    <p>We are more than just a team. We are a brotherhood of warriors, builders, and gatherers, united by purpose and driven by excellence...</p>
+    <p><strong>This is Arcadia.</strong><br>Bold in battle. Brilliant in design. Bound by unity.</p>
+    <p><em>Are you ready to join the legacy?</em></p>
+    <div class="discord-btn">
+      <a href="https://discord.gg/QuXggxyzQk" target="_blank">Join Us on Discord</a>
+    </div>
   </section>
+
+  <footer>
+    &copy; 2025 Arcane Realms Team Arcadia | Designed by Owaila256
+  </footer>
+
+  <!-- COMMENT SECTION -->
+  <section style="padding: 30px; max-width: 900px; margin: auto;">
+    <h2 style="font-family: 'Cinzel', serif; color: #e6c17c; text-align: center;">💬 Comments</h2>
+    <div id="disqus_thread"></div>
+
+    <script>
+      var disqus_config = function () {
+        this.page.url = window.location.href;
+        this.page.identifier = window.location.pathname;
+      };
+
+      (function() {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://arcadiateam-comments.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+      })();
+    </script>
+
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </section>
+
+  <!-- Theme toggle script -->
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle('light');
+    }
+  </script>
 </body>
 </html>
